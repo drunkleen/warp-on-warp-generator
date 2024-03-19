@@ -11,7 +11,7 @@ This Python program, named "WarpOnWarp Generator" facilitates the generation of 
 ## Prerequisites
 
 - Python 3.x
-- Requests library (Install using `pip install requests`) or:
+- Requests library (Install using `pip install requests`)
 
 
 ## Usage
