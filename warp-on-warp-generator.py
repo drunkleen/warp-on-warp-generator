@@ -56,18 +56,29 @@ def main():
         print(f"{GREEN}Second account registered.{RESET}")
 
         # Update the JSON template with the registered accounts
-        json_file_to_save["outbounds"][2]["local_address"][1] = first_account["local_address"][1]
+        json_file_to_save["outbounds"][2]["local_address"][1] = first_account[
+            "local_address"
+        ][1]
         json_file_to_save["outbounds"][2]["private_key"] = first_account["private_key"]
         json_file_to_save["outbounds"][2]["reserved"] = first_account["reserved"]
-        json_file_to_save["outbounds"][3]["local_address"][1] = second_account["local_address"][1]
+        json_file_to_save["outbounds"][3]["local_address"][1] = second_account[
+            "local_address"
+        ][1]
         json_file_to_save["outbounds"][3]["private_key"] = second_account["private_key"]
         json_file_to_save["outbounds"][3]["reserved"] = second_account["reserved"]
 
         # Ask for custom clean IP and port
-        use_custom_ip = input(f"{YELLOW}[+] Do you want to use a custom clean IP? (y/N): {RESET}").lower() == "y"
+        use_custom_ip = (
+            input(
+                f"{YELLOW}[+] Do you want to use a custom clean IP? (y/N): {RESET}"
+            ).lower()
+            == "y"
+        )
         if use_custom_ip:
             ip = input("Enter clean IP address: ").strip()
             port = int(input("Enter clean port: ").strip())
+            json_file_to_save["outbounds"][2]["server"] = ip
+            json_file_to_save["outbounds"][2]["server_port"] = port
             json_file_to_save["outbounds"][3]["server"] = ip
             json_file_to_save["outbounds"][3]["server_port"] = port
         else:
@@ -85,7 +96,9 @@ def main():
         with open(config_path, "w") as f:
             json.dump(json_file_to_save, f, indent=2)
 
-        print(f"\n{GREEN}Config was successfully created!{RESET}\n{GREEN}Generated config saved:\n {RESET}{config_path}\n")
+        print(
+            f"\n{GREEN}Config was successfully created!{RESET}\n{GREEN}Generated config saved:\n {RESET}{config_path}\n"
+        )
 
     except Exception as e:
         print(f"{RED}[+] Couldn't make the config.\nThere was an error:{RESET}\n{e}")
