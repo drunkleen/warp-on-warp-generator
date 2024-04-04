@@ -20,7 +20,11 @@ This Python program, named "WarpOnWarp Generator" facilitates the generation of 
 ```bash
 git clone https://github.com/drunkleen/warp-on-warp-generator
 ```
-2. Install the necessary dependencies (`requests` library).
+2. Change directory to the project folder.
+```bash
+cd warp-on-warp-generator
+```
+3. Install the necessary dependencies (`requests` library).
 ```bash
 pip install -r requirements.txt
 ```
